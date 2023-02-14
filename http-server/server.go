@@ -1,13 +1,16 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 )
 
-type Server interface {
-	ListenAdnServe(addr string, handler Handler) error
+func PlayerServe(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprint(w, "20")
 }
 
-type Handler interface {
-	ServeHTTP(http.ResponseWriter, *http.Request)
+type TestFunc func()
+
+func (f TestFunc) AnotherFunc() {
+	fmt.Println("Hello World")
 }
